@@ -1,0 +1,100 @@
+extends layout
+
+block content
+  #addAuthor.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+    form(method="post")
+      .modal-dialog.modal-sm(role='document')     
+        .modal-content
+          .modal-header
+            h5#exampleModalLabel.modal-title Add Author
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+          .modal-body
+            .col-md-12           
+              label.col-form-label(for="name") Name
+              input.form-control.border-basic(type="text", name="name")
+              label.col-form-label(for="age") No of Books
+              input.form-control.border-basic(type="text", name="books")
+              label.col-form-label(for="place") Place
+              input.form-control.border-basic(type="text", name="place")
+              label.col-form-label(for="genre") Genre
+              input.form-control.border-basic(type="text", name="genre")
+          .modal-footer
+            button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='submit') Save changes
+  #editAuthor.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+    form(method="post",  action="authors/edit")
+      .modal-dialog(role='document')     
+        .modal-content
+          .modal-header
+            h5#exampleModalLabel.modal-title Update Author
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+          .modal-body
+            .col-md-12.offset-md-3
+              input.form-control.border-basic.col-md-6#auth-id.d-none(type="text", name="authId", value="")
+              label.col-form-label(for="name") Name
+              input.form-control.border-basic.col-md-6#auth-name(type="text", name="name", value="")
+              label.col-form-label(for="books") No of Book
+              input.form-control.border-basic.col-md-6#auth-books(type="text", name="books", value="")
+              label.col-form-label(for="place") Place
+              input.form-control.border-basic.col-md-6#auth-place(type="text", name="place", value="")
+              label.col-form-label(for="genre") Genre
+              input.form-control.border-basic.col-md-6#auth-genre(type="text", name="genre", value="")
+              //- label.col-form-label(for="genre") Likes
+              //- input.form-control.border-basic.col-md-6#auth-likes(type="text", name="likes", value="")
+          .modal-footer
+            button.btn.btn-secondary(type='button', data-dismiss='modal') Close
+            button.btn.btn-primary(type='submit') Save changes
+  #deleteAuthor.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalLabel', aria-hidden='true')
+    form(method="post", action="authors/delete")
+      .modal-dialog(role='document')     
+        .modal-content
+          .modal-header
+            h5#exampleModalLabel.modal-title Add Author
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+          .modal-body
+            .col-md-12.text-center
+              input.form-control.border-basic.col-md-6#del-auth-id.d-none(type="text", name="authId", value="")
+              label(for="delete-message") Are you Sure want to Delete this Author?
+          .modal-footer
+            button.btn.btn-secondary(type='button', data-dismiss='modal') No, Keep
+            button.btn.btn-danger(type='submit') Remove Author
+  .container-fluid.p-5
+    h1.text-center Authors      
+    .row.col-md-12.mt-5.offset-1
+      .col-md-12.mb-3
+        button.btn-primary.btn.fa.fa-plus-circle(type="submit",data-toggle="modal" data-target="#addAuthor")
+          span.myfonts     Add  Author        
+      if(authors.length > 0)
+      each val, index in authors
+        .cards.col-md-3.col-lg-2.mr-4.mb-4.author-cards.p-0
+          .card-myheader
+            h5.text-light #{val.name}
+          .card-body
+            p.card-text.font-weight-bolder Books Published -  
+              span.font-weight-normal #{val.no_of_books}
+            p.card-text.font-weight-bolder Place - 
+              span.font-weight-normal.text-capitalize #{val.place}
+            p.card-text.font-weight-bolder Genre - 
+              span.font-weight-normal.text-capitalize #{val.genre}
+          .card-options
+            button.btn.fa.fa-ellipsis-v.card-option-btn
+            .card-option-values.show-on-hover
+              ul
+                li.fa.fa-pencil.ui.buton.btn.btn-sm.btn-edit(style="color:#2874A6", data-toggle="modal", data-target="#editAuthor", data-authid= val.id, data-authname= val.name, data-authbooks= val.no_of_books, data-authplace= val.place, data-authgenre = val.genre, data-authlikes=val.likes)
+                  span.myfonts   Edit                
+                li.fa.fa-trash.ui.buton.btn.btn-sm.btn-delete(data-toggle="modal", data-target="#deleteAuthor", data-authid= val.id, style="color:#A93226")
+                  span.myfonts   Delete
+          .card-myfooter.mb-3.row
+            .col-6
+              button.like-btn.fa.fa-thumbs-up(onclick="changeLikeBtn(this.id"+")", id="butnid"+ index)            
+                span.myfonts.like-btn-text Like 
+                //- span.text-warning.myfonts #{val.likes}
+            //- .col-4
+              button.btn.btn-success.btn-sm.fa.fa-pencil.mr-2(data-toggle="modal", data-target="#editAuthor", data-authid= val.id, data-authname= val.name, data-authbooks= val.no_of_books, data-authplace= val.place, data-authgenre = val.genre, data-authlikes=val.likes)
+              button.btn.btn-danger.btn-sm.fa.fa-trash(data-toggle="modal", data-target="#deleteAuthor", data-authid= val.id)
+      else
+        .col-md-10.text-center
+          img(src="img/noodata.svg", alt="No Data", height="350px")

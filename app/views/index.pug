@@ -1,0 +1,43 @@
+extends layout
+
+block content
+  .container-fluid.p-5    
+    h1.text-center Top Selling Books..
+    .col-12.row
+      .col-8
+        .row.mt-5.offset-1     
+          each val in articles
+            .card.col-md-5.col-lg-4.mr-3.mb-3
+              .card-header
+                h5 Title - #{val.title} 
+              .card-body
+                h6 Preface
+                p.card-text #{val.text}
+              .card-footer
+                Footer 
+                  p Buy here - 
+                      span.text-primary #{val.url}
+          button.btn(onclick="location.href='/books'") See More...
+      .col-4.mt-5
+        img(src="/img/book1y.svg", alt="contact", height="270px")   
+    
+    h1.text-center.mt-5 Best Authors
+    .col-12.row
+      .col-8
+        .row.col-md-12.mt-5.offset-1     
+          each val in authors
+            .cards.col-md-4.col-lg-4.mr-4.mb-4.author-cards.p-0
+              .card-myheader
+                h4 #{val.name}
+              .card-body
+                p.card-text Books Published -  #{val.no_of_books}
+                p.card-text Place - #{val.place}
+                p.card-text Genre - #{val.genre}
+              .card-myfooter.mb-3               
+                .likes-footer
+                  p.fa.fa-thumbs-up.p-1       
+                    span.myfonts Likes - 
+                    span.myfonts  #{val.likes}
+          button.btn(onclick="location.href='/authors'") See More...
+      .col-4.mt-5
+        img(src="/img/writery.svg", alt="contact", height="250px") 

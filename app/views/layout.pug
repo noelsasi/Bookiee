@@ -1,0 +1,48 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width')
+    title= title
+    link(rel="icon" href="/img/store.svg", type="image/svg" sizes="16x16")
+    block css
+      link(rel='stylesheet', href='/css/style.css')
+      link(rel="stylesheet", href="/fonts/fonts.css")
+      //- link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css", integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T", crossorigin="anonymous")
+      link(href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css", rel="stylesheet", integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN", crossorigin="anonymous")
+      link(rel='stylesheet', href='bootstrap/css/bootstrap.min.css')
+      link(rel="stylesheet", href="/css/toastr.min.css")
+      
+    block js
+      if ENV_DEVELOPMENT
+        script(src='http://localhost:35729/livereload.js')
+        script(src="js/jquery-3.4.1.js")
+        script(src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous")
+        script(src="js/script.js")
+        script(src="js/toastr.min.js")
+        
+  body(onload='currentUrl()')
+    nav.navbar.navbar-expand-lg
+      a.navbar-brand.brand-text @Bookiee
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarNavAltMarkup', aria-controls='navbarNavAltMarkup', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarNavAltMarkup.collapse.navbar-collapse
+        .navbar-nav.mr-auto
+          a.nav-item.nav-link(class=(url == "/home") ? "active" : "", href='/home')
+            | Home 
+            span.sr-only (current)
+          a.nav-item.nav-link(class=(url == "/authors") ? "active" : "", href='authors') Authors
+          a.nav-item.nav-link(class=(url == "/books") ? "active" : "", href='books') Books
+          a.nav-item.nav-link(class=(url == "/contact") ? "active" : "", href='contact') Contact Us
+        span.navbar-text.user-container(data-toggle="dropdown")
+          span.mr-3.user-text #{user.fullname}
+          img#user-details(src="/img/noel.jpg", alt="contact", height="35px", class='user-image')
+          .dropdown-menu.user-drpdwn(style='left: auto; right:5px;')
+            a.dropdown-item.drp-item.fa.fa-gear.py-2(href='#')
+              span.myfonts   Settings           
+            a.dropdown-item.drp-item.fa.fa-pencil.py-2(onclick="location.href='/user-edit'")
+              span.myfonts   Update Profile 
+            a.dropdown-item.drp-item.fa.fa-power-off.py-2(onclick="location.href='/logout'")
+              span.myfonts   Logout           
+
+    block content

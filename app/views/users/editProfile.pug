@@ -1,0 +1,16 @@
+extends ../layout
+
+block content
+  .container-fluid.p-5.offset-md-3
+    .my-form.p-4.col-md-3.offset-md-1.shadow.mt-3.bg-light.myfonts   
+      h3 Edit Profile
+      .form-group.col-md-10.mt-4
+        label(for='exampleInputEmail1') UserName
+        input#username.form-control(type='text', value=users.username, name="username" disabled)
+      .form-group.col-md-10
+        label(for='exampleInputPassword1') Full Name
+        input#fullname.form-control(type='text', value=users.fullname, name="fullname")
+      .form-group.col-md-10
+        label(for='exampleInputPassword1') Email
+        input#email.form-control(type='email', value=users.email, name="email")
+      button.btn.btn-warning.ml-3(onclick="editProfile('" + users.id +"')") Save Changes 
