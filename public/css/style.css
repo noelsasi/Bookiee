@@ -35,6 +35,17 @@ h1, h2, h3, h4, h5, h6, p, .card-text, a, .modal {
   border-bottom: 4px solid #fdfbfb;
 }
 
+.avatar-img{
+  height: 30px;
+  border-radius: 25px;
+}
+
+.author-avatar{
+  position: absolute;
+  left: 10px;
+  top: 13px;
+}
+
 .active {
   color: white;
   font-weight: 700;
@@ -154,9 +165,10 @@ a {
 
 .card-options {
   position: absolute;
-  top: 10px;
-  right: 10px;
-  background-color: #F1C40F;
+  top: 8px;
+  right: 3px;
+  width: 30px;
+  background-color: transparent;
   border-radius: 5px;
 }
 

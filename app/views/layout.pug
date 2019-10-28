@@ -1,4 +1,3 @@
-doctype html
 html(lang='en')
   head
     meta(charset='UTF-8')
@@ -37,9 +36,7 @@ html(lang='en')
         span.navbar-text.user-container(data-toggle="dropdown")
           span.mr-3.user-text #{user.fullname}
           img#user-details(src="/img/noel.jpg", alt="contact", height="35px", class='user-image')
-          .dropdown-menu.user-drpdwn(style='left: auto; right:5px;')
-            a.dropdown-item.drp-item.fa.fa-gear.py-2(href='#')
-              span.myfonts   Settings           
+          .dropdown-menu.user-drpdwn(style='left: auto; right:5px;')          
             a.dropdown-item.drp-item.fa.fa-pencil.py-2(onclick="location.href='/user-edit'")
               span.myfonts   Update Profile 
             a.dropdown-item.drp-item.fa.fa-power-off.py-2(onclick="location.href='/logout'")

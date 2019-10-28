@@ -10,7 +10,7 @@ block content
             button.close(type='button', data-dismiss='modal', aria-label='Close')
               span(aria-hidden='true') ×
           .modal-body
-            .col-md-12           
+            .col-md-12                 
               label.col-form-label(for="name") Name
               input.form-control.border-basic(type="text", name="name")
               label.col-form-label(for="age") No of Books
@@ -41,8 +41,6 @@ block content
               input.form-control.border-basic.col-md-6#auth-place(type="text", name="place", value="")
               label.col-form-label(for="genre") Genre
               input.form-control.border-basic.col-md-6#auth-genre(type="text", name="genre", value="")
-              //- label.col-form-label(for="genre") Likes
-              //- input.form-control.border-basic.col-md-6#auth-likes(type="text", name="likes", value="")
           .modal-footer
             button.btn.btn-secondary(type='button', data-dismiss='modal') Close
             button.btn.btn-primary(type='submit') Save changes
@@ -70,8 +68,10 @@ block content
       if(authors.length > 0)
       each val, index in authors
         .cards.col-md-3.col-lg-2.mr-4.mb-4.author-cards.p-0
+          .author-avatar
+            img(src="/img/avatar1.png", alt="avatar", class="avatar-img")
           .card-myheader
-            h5.text-light #{val.name}
+            h6.text-light.ml-4 #{val.name}
           .card-body
             p.card-text.font-weight-bolder Books Published -  
               span.font-weight-normal #{val.no_of_books}

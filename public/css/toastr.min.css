@@ -100,7 +100,7 @@ button.toast-close-button {
 }
 
 #toast-container {
-  margin-top: 3%; 
+  margin-top: 4%; 
   position: fixed;
   z-index: 999999;
   pointer-events: none
@@ -113,7 +113,7 @@ button.toast-close-button {
 }
 
 #toast-container>div {
-  font-family: 'Comfortaa', cursive;
+  font-family: 'montserratregular';
   font-size: 14px;
   position: relative;
   pointer-events: auto;
