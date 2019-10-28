@@ -7,6 +7,7 @@ Bookiee is a simple Web Application with CRUD operations with three tables Users
  - sequelize
  - Bootstrap
  - ExpressJS
+ - PassportJS
  - Gulp
  
  Experience It.
@@ -15,8 +16,8 @@ Bookiee is a simple Web Application with CRUD operations with three tables Users
  - So, I've made this setup very easy with Yeoman Generator. install express, select mvc, pug, postgres and finally Gulp.
  - Install Postgres and PgAdmin and connect to the application in config/config.js with host and password
  - It's really interesting doing CRUD operations fetchnig the data from controllers to pug.
- - I've used ES6 promise.all and map functions.
- - I've Used PassportJs for Authentication which is pretty simple with minimal coding
- - have IsLoggedin function which allows you through the route. 
+ - I've used ES6 promises and map functions.
+ - PassportJs for Authentication which is pretty simple with minimal coding
+ - have IsLoggedin function which allows you through the route only if you're loggedin. 
  - Ajax made simple to avoid the pages from loading and refresh.
  
